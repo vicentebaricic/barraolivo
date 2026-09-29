@@ -1,0 +1,831 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barra Olivo · Cocina peruana y marisquería en Chicureo</title>
+<meta name="description" content="Barra Olivo: cocina peruana y marisquería en Boulevard Los Ingleses, Chicureo. Reservas y delivery por WhatsApp.">
+<meta name="theme-color" content="#2F3719">
+<meta property="og:title" content="Barra Olivo · Chicureo">
+<meta property="og:description" content="Cocina peruana y marisquería. Boulevard Los Ingleses, Chicureo.">
+<meta property="og:image" content="img/hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!--
+  MULTIMEDIA — subir a /img con estos nombres (jpg/png). Si falta una imagen,
+  se muestra un fondo de respaldo y el layout no se rompe.
+    hero.jpg · nosotros.jpg · fundador.jpg
+    STICKERS (PNG con fondo transparente) en /img/stickers:
+      carta.png · hero.png · nosotros.png · eventos.png · resenas.png
+    pulpo-al-olivo.jpg · machas-parmesana.jpg · ostiones-parmesana.jpg
+    empanadas-lomo.jpg · causas.jpg · tartar-atun.jpg · ceviche.jpg · tabla.jpg
+    lomo-saltado.jpg · chaufa-mariscos.jpg · aji-gallina.jpg
+    pisco-sour.jpg · chilcano.jpg · maracuya-sour.jpg
+    suspiro-limeno.jpg · picarones.jpg · volcan-lucuma.jpg
+    exp-barra.jpg · exp-musica.jpg · exp-delivery.jpg · evento.jpg
+    ig-1.jpg … ig-6.jpg
+-->
+
+<style>
+:root{
+  /* Paleta */
+  --bg:#F6F1E6; --surface:#FFFCF5; --surface-2:#EEE6D4;
+  --ink:#20241A; --ink-soft:#4E5242; --line:rgba(32,36,26,.14);
+  --olive:#4F5B2C; --olive-deep:#2F3719; --on-olive:#F6F1E6;
+  --aji:#E4A932; --aji-soft:#F3D58E; --on-aji:#231F0E;
+  --sample-bg:#FBE3DA; --sample-ink:#8A2E14;
+  --scrim:linear-gradient(180deg,rgba(20,22,12,.25) 0%,rgba(20,22,12,.15) 40%,rgba(20,22,12,.78) 100%);
+  --placeholder:repeating-linear-gradient(135deg,#E7DEC8 0 14px,#EFE7D4 14px 28px);
+  /* Tipografía */
+  --f-display:"Fraunces",Georgia,"Times New Roman",serif;
+  --f-body:"Karla",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --fs-xs:.8125rem; --fs-sm:.9375rem; --fs-md:1.0625rem; --fs-lg:1.25rem;
+  --fs-h3:clamp(1.25rem,1.1rem + .6vw,1.5rem);
+  --fs-h2:clamp(2rem,1.5rem + 2.4vw,3.25rem);
+  --fs-h1:clamp(2.75rem,1.8rem + 5vw,5.75rem);
+  /* Espacio / forma */
+  --s-1:.25rem; --s-2:.5rem; --s-3:.75rem; --s-4:1rem; --s-5:1.5rem; --s-6:2rem; --s-7:3rem; --s-8:4.5rem; --s-9:7rem;
+  --r-sm:10px; --r-md:18px; --r-lg:28px; --r-pill:999px;
+  --shadow:0 1px 2px rgba(32,36,26,.06),0 12px 32px -12px rgba(32,36,26,.22);
+  --container:1180px; --gutter:clamp(1rem,.5rem + 2.5vw,2.5rem);
+  /* Movimiento */
+  --ease-out:cubic-bezier(.22,1,.36,1); --t-fast:180ms; --t-med:320ms; --t-slow:700ms;
+  --z-nav:40; --z-fab:50; --z-drawer:60;
+  color-scheme:light;
+}
+:root[data-theme="dark"]{
+  --bg:#15170F; --surface:#1E2116; --surface-2:#282C1D;
+  --ink:#EEE8D8; --ink-soft:#BDB8A4; --line:rgba(238,232,216,.14);
+  --olive:#A8B66F; --olive-deep:#0F110A; --on-olive:#15170F;
+  --aji:#EDB84E; --aji-soft:#5A4618; --on-aji:#1C1705;
+  --sample-bg:#4A2317; --sample-ink:#FFC9B5;
+  --placeholder:repeating-linear-gradient(135deg,#23271A 0 14px,#2A2E20 14px 28px);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 14px 34px -12px rgba(0,0,0,.6);
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#15170F; --surface:#1E2116; --surface-2:#282C1D;
+    --ink:#EEE8D8; --ink-soft:#BDB8A4; --line:rgba(238,232,216,.14);
+    --olive:#A8B66F; --olive-deep:#0F110A; --on-olive:#15170F;
+    --aji:#EDB84E; --aji-soft:#5A4618; --on-aji:#1C1705;
+    --sample-bg:#4A2317; --sample-ink:#FFC9B5;
+    --placeholder:repeating-linear-gradient(135deg,#23271A 0 14px,#2A2E20 14px 28px);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 14px 34px -12px rgba(0,0,0,.6);
+    color-scheme:dark;
+  }
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--fs-md);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background var(--t-med),color var(--t-med)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;line-height:1.05;margin:0;letter-spacing:-.015em;text-wrap:balance}
+h2 em,h1 em{font-style:italic;color:var(--olive)}
+p{margin:0}
+:focus-visible{outline:3px solid var(--aji);outline-offset:3px;border-radius:6px}
+.container{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:var(--gutter)}
+.section{padding-block:clamp(4rem,3rem + 5vw,7.5rem);scroll-margin-top:64px;overflow-x:clip}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:var(--fs-xs);font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--olive)}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--aji);border-radius:2px}
+.section-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:var(--s-5);margin-bottom:var(--s-7)}
+.section-head h2{font-size:var(--fs-h2);margin-top:var(--s-3)}
+.lead{color:var(--ink-soft);max-width:46ch}
+.skip{position:absolute;left:-999px;top:0;background:var(--aji);color:var(--on-aji);padding:.75rem 1rem;z-index:100;border-radius:0 0 8px 0}
+.skip:focus{left:0}
+.icon{width:20px;height:20px;flex:none}
+
+/* Badge contenido de ejemplo */
+.sample{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--f-body);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;line-height:1;padding:.4rem .6rem;border-radius:var(--r-pill);background:var(--sample-bg);color:var(--sample-ink);border:1px dashed currentColor;vertical-align:middle;white-space:nowrap}
+.sample::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+
+/* Botones */
+.btn{--h:52px;display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:var(--h);padding:0 1.5rem;border-radius:var(--r-pill);border:1.5px solid transparent;font-weight:700;font-size:var(--fs-sm);letter-spacing:.02em;text-decoration:none;cursor:pointer;touch-action:manipulation;transition:transform var(--t-fast) var(--ease-out),background var(--t-fast),color var(--t-fast),border-color var(--t-fast)}
+.btn:active{transform:scale(.97)}
+.btn-aji{background:var(--aji);color:var(--on-aji)}
+.btn-aji:hover{background:color-mix(in srgb,var(--aji) 86%,#fff)}
+.btn-olive{background:var(--olive);color:var(--on-olive)}
+.btn-olive:hover{background:color-mix(in srgb,var(--olive) 88%,#000)}
+.btn-ghost{border-color:var(--line);background:transparent;color:var(--ink)}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn-light{border-color:rgba(255,255,255,.55);color:#fff;background:rgba(255,255,255,.06);backdrop-filter:blur(6px)}
+.btn-light:hover{background:rgba(255,255,255,.16)}
+
+/* Stickers: uno por sección como máximo, decorativos */
+.sticker{position:absolute;z-index:2;width:clamp(88px,14vw,150px);height:auto;transform:rotate(var(--rot,-6deg));filter:drop-shadow(0 8px 14px rgba(0,0,0,.22));pointer-events:none;user-select:none;animation:stickerFloat 6s ease-in-out infinite alternate}
+.sticker.is-missing{display:none}
+@keyframes stickerFloat{to{transform:rotate(calc(var(--rot,-6deg) + 3deg)) translateY(-6px)}}
+.hero .sticker{right:var(--gutter);top:96px;--rot:8deg;width:clamp(96px,16vw,190px)}
+.about-figure .sticker{left:-14px;top:-26px;--rot:-10deg}
+.events-grid{position:relative}
+.events .sticker{right:0;bottom:-40px;--rot:-8deg}
+.reviews .container{position:relative}
+.reviews .sticker{left:calc(var(--gutter) - 10px);top:-64px;--rot:-5deg;width:clamp(80px,11vw,120px)}
+@media (max-width:640px){.hero .sticker{top:84px}.events .sticker{right:12px}.reviews .sticker{display:none}}
+
+/* Imagen con respaldo */
+.media{position:relative;overflow:hidden;background:var(--placeholder)}
+.media img{width:100%;height:100%;object-fit:cover;transition:transform var(--t-slow) var(--ease-out)}
+.media.is-missing img{opacity:0}
+.media.is-missing::after{content:attr(data-label);position:absolute;inset:auto 0 0 0;padding:.6rem .8rem;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+
+/* NAV */
+.nav{position:fixed;inset:0 0 auto 0;z-index:var(--z-nav);transition:background var(--t-med),box-shadow var(--t-med),color var(--t-med);color:#fff}
+.nav.is-solid{background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);color:var(--ink)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;gap:var(--s-4)}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--f-display);font-size:1.35rem;letter-spacing:-.01em}
+.brand svg{width:30px;height:30px}
+.nav-links{display:none;gap:var(--s-6);list-style:none;margin:0;padding:0}
+.nav-links a{text-decoration:none;font-size:var(--fs-sm);font-weight:500;opacity:.9;padding:.5rem 0;position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:2px;background:var(--aji);transform:scaleX(0);transform-origin:left;transition:transform var(--t-fast) var(--ease-out)}
+.nav-links a:hover::after,.nav-links a.is-active::after{transform:scaleX(1)}
+.nav-actions{display:flex;align-items:center;gap:var(--s-2)}
+.icon-btn{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;border:1px solid currentColor;border-color:color-mix(in srgb,currentColor 30%,transparent);background:transparent;cursor:pointer;transition:background var(--t-fast)}
+.icon-btn:hover{background:color-mix(in srgb,currentColor 10%,transparent)}
+.nav .btn{--h:44px;padding:0 1.1rem;display:none}
+.theme-sun{display:none}
+:root[data-theme="dark"] .theme-sun{display:block} :root[data-theme="dark"] .theme-moon{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-sun{display:block}:root:not([data-theme="light"]) .theme-moon{display:none}}
+.menu-toggle{display:grid}
+.drawer{position:fixed;inset:0;z-index:var(--z-drawer);background:var(--olive-deep);color:#F6F1E6;display:flex;flex-direction:column;padding:var(--s-5) var(--gutter) var(--s-7);transform:translateY(-100%);visibility:hidden;transition:transform var(--t-med) var(--ease-out),visibility 0s linear var(--t-med)}
+.drawer.is-open{transform:none;visibility:visible;transition:transform var(--t-med) var(--ease-out)}
+.drawer-top{display:flex;justify-content:space-between;align-items:center;height:44px}
+.drawer ul{list-style:none;padding:0;margin:var(--s-7) 0 auto}
+.drawer li a{display:block;font-family:var(--f-display);font-size:2.25rem;text-decoration:none;padding:.35rem 0}
+.drawer li a:hover{color:#EDB84E}
+@media (min-width:960px){.nav-links{display:flex}.menu-toggle{display:none}.nav .btn{display:inline-flex}}
+
+/* HERO */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;isolation:isolate;overflow:hidden}
+.hero .media{position:absolute;inset:0;z-index:-2;background:#2F3719}
+.hero .media img{transform:scale(1.06);animation:heroZoom 14s var(--ease-out) forwards}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--scrim)}
+@keyframes heroZoom{to{transform:scale(1)}}
+.hero-inner{padding-block:0 clamp(3rem,2rem + 6vw,6.5rem);width:100%}
+.hero h1{font-size:var(--fs-h1);max-width:12ch;line-height:.98}
+.hero h1 em{color:#F3C865}
+.hero p{font-size:var(--fs-lg);margin-top:var(--s-4);max-width:34ch;color:rgba(255,255,255,.88)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:var(--s-3);margin-top:var(--s-6)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:var(--s-2) var(--s-5);margin-top:var(--s-7);font-size:var(--fs-sm);color:rgba(255,255,255,.82)}
+.hero-meta span{display:inline-flex;align-items:center;gap:.45rem}
+.hero-meta .icon{width:18px;height:18px;color:#F3C865}
+
+/* NOSOTROS */
+.about{display:grid;gap:var(--s-7);align-items:center}
+.about .media{aspect-ratio:4/5;border-radius:var(--r-lg)}
+.about-figure{position:relative}
+.stamp{position:absolute;right:-8px;bottom:-22px;width:124px;height:124px;border-radius:50%;background:var(--aji);color:var(--on-aji);display:grid;place-items:center;text-align:center;font-family:var(--f-display);line-height:1.05;box-shadow:var(--shadow);transform:rotate(-8deg)}
+.stamp strong{display:block;font-size:2rem;font-weight:600}
+.stamp small{font-family:var(--f-body);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
+.about h2{font-size:var(--fs-h2);margin:var(--s-3) 0 var(--s-5)}
+.about .lead{font-size:var(--fs-lg)}
+.pillars{display:grid;gap:var(--s-4);margin-top:var(--s-6);padding:0;list-style:none}
+.pillars li{display:flex;gap:var(--s-4);align-items:flex-start;padding-top:var(--s-4);border-top:1px solid var(--line)}
+.pillars .num{font-family:var(--f-display);font-style:italic;color:var(--olive);font-size:1.25rem;min-width:2ch}
+.pillars b{display:block;font-weight:700}
+.pillars span{color:var(--ink-soft);font-size:var(--fs-sm)}
+@media (min-width:900px){.about{grid-template-columns:1fr 1.05fr;gap:var(--s-9)}.stamp{right:-36px;width:148px;height:148px}}
+
+/* CARTA */
+.carta{background:var(--surface-2)}
+.carta .section-head{position:relative}
+.carta .sticker{right:0;top:-80px;--rot:9deg;width:clamp(110px,18vw,180px)}
+.tabs{display:flex;gap:var(--s-2);overflow-x:auto;scrollbar-width:none;padding:4px 2px var(--s-2);margin:0 calc(var(--gutter) * -1) var(--s-6);padding-inline:var(--gutter);scroll-snap-type:x proximity}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;min-height:44px;padding:0 1.1rem;border-radius:var(--r-pill);border:1.5px solid var(--line);background:var(--surface);cursor:pointer;font-weight:500;font-size:var(--fs-sm);white-space:nowrap;scroll-snap-align:start;transition:background var(--t-fast),color var(--t-fast),border-color var(--t-fast)}
+.tab:hover{border-color:var(--olive)}
+.tab[aria-selected="true"]{background:var(--olive);border-color:var(--olive);color:var(--on-olive)}
+.menu-grid{display:grid;gap:var(--s-5);grid-template-columns:1fr}
+.dish{display:flex;flex-direction:column;background:var(--surface);border-radius:var(--r-md);overflow:hidden;box-shadow:var(--shadow);animation:dishIn var(--t-med) var(--ease-out) both;animation-delay:calc(var(--i,0) * 45ms)}
+@keyframes dishIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.dish .media{aspect-ratio:4/3}
+.dish:hover .media img{transform:scale(1.04)}
+.dish-body{display:flex;flex-direction:column;gap:var(--s-2);padding:var(--s-4) var(--s-5) var(--s-5);flex:1}
+.dish-top{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s-3)}
+.dish h3{font-size:var(--fs-h3)}
+.price{font-family:var(--f-display);font-size:1.15rem;font-weight:600;color:var(--olive);white-space:nowrap;font-variant-numeric:tabular-nums}
+.dish p{color:var(--ink-soft);font-size:var(--fs-sm);line-height:1.5}
+.dish-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s-2);margin-top:auto;padding-top:var(--s-3)}
+.dish-order{display:inline-flex;align-items:center;gap:.4rem;min-height:44px;font-weight:700;font-size:var(--fs-sm);color:var(--olive);text-decoration:none}
+.dish-order:hover{text-decoration:underline;text-underline-offset:4px}
+.carta-foot{display:flex;flex-wrap:wrap;gap:var(--s-3);justify-content:center;margin-top:var(--s-7)}
+@media (min-width:640px){.menu-grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1024px){.menu-grid{grid-template-columns:repeat(4,1fr)}}
+
+/* EXPERIENCIA */
+.exp-grid{display:grid;gap:var(--s-4)}
+.exp-card{position:relative;border-radius:var(--r-lg);overflow:hidden;min-height:360px;display:flex;align-items:flex-end;color:#fff;isolation:isolate}
+.exp-card .media{position:absolute;inset:0;z-index:-2}
+.exp-card::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent 35%,rgba(15,17,10,.82))}
+.exp-card:hover .media img{transform:scale(1.05)}
+.exp-card div{padding:var(--s-5)}
+.exp-card h3{font-size:1.75rem}
+.exp-card p{color:rgba(255,255,255,.85);font-size:var(--fs-sm);margin-top:var(--s-1)}
+.ig-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-2);margin-top:var(--s-6)}
+.ig-strip a{display:block;border-radius:var(--r-sm);overflow:hidden}
+.ig-strip .media{aspect-ratio:1}
+.ig-strip a:hover img{transform:scale(1.06)}
+.ig-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s-4);margin-top:var(--s-5)}
+.ig-handle{font-family:var(--f-display);font-size:1.5rem;text-decoration:none}
+.ig-handle:hover{color:var(--olive)}
+@media (min-width:760px){.exp-grid{grid-template-columns:1.3fr 1fr 1fr}.exp-card{min-height:480px}.ig-strip{grid-template-columns:repeat(6,1fr)}}
+
+/* EVENTOS */
+.events{background:var(--olive-deep);color:#F1ECDD}
+.events .eyebrow{color:#C9D38F}
+.events h2 em{color:#F3C865}
+.events-grid{display:grid;gap:var(--s-7);align-items:center}
+.events .media{aspect-ratio:5/4;border-radius:var(--r-lg);background:repeating-linear-gradient(135deg,#262C15 0 14px,#2D331A 14px 28px)}
+.events h2{font-size:var(--fs-h2);margin:var(--s-3) 0 var(--s-4)}
+.events .lead{color:rgba(241,236,221,.8)}
+.form{display:grid;gap:var(--s-4);margin-top:var(--s-6)}
+.form-row{display:grid;gap:var(--s-4);grid-template-columns:1fr 1fr}
+.field{display:grid;gap:.4rem}
+.field label{font-size:var(--fs-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(241,236,221,.75)}
+.field input,.field select{width:100%;min-height:50px;padding:0 1rem;border-radius:var(--r-sm);border:1.5px solid rgba(241,236,221,.22);background:rgba(255,255,255,.05);color:#F1ECDD;font-size:16px}
+.field select option{color:#20241A}
+.field input:focus,.field select:focus{outline:none;border-color:#EDB84E;box-shadow:0 0 0 3px rgba(237,184,78,.25)}
+.field input::placeholder{color:rgba(241,236,221,.45)}
+.form .btn{justify-self:start}
+.form-note{font-size:var(--fs-xs);color:rgba(241,236,221,.6)}
+@media (min-width:900px){.events-grid{grid-template-columns:1fr 1fr;gap:var(--s-9)}}
+
+/* EQUIPO */
+.founder{display:grid;gap:var(--s-7);align-items:center}
+.founder .media{aspect-ratio:4/5;border-radius:var(--r-lg)}
+.founder blockquote{margin:0;font-family:var(--f-display);font-size:clamp(1.6rem,1.2rem + 1.8vw,2.5rem);line-height:1.2;letter-spacing:-.01em}
+.founder blockquote::before{content:"“";display:block;font-size:4.5rem;line-height:.6;color:var(--aji);margin-bottom:var(--s-2)}
+.founder-name{margin-top:var(--s-5);display:flex;flex-direction:column;gap:.15rem}
+.founder-name b{font-size:var(--fs-lg)}
+.founder-name span{color:var(--ink-soft);font-size:var(--fs-sm)}
+.founder-facts{display:flex;flex-wrap:wrap;gap:var(--s-2);margin-top:var(--s-5);list-style:none;padding:0}
+.founder-facts li{padding:.45rem .9rem;border-radius:var(--r-pill);border:1px solid var(--line);font-size:var(--fs-sm)}
+@media (min-width:900px){.founder{grid-template-columns:.85fr 1.15fr;gap:var(--s-9)}}
+
+/* RESEÑAS */
+.reviews{background:var(--surface-2)}
+.review-grid{display:grid;gap:var(--s-4)}
+.review{background:var(--surface);border-radius:var(--r-md);padding:var(--s-6);display:flex;flex-direction:column;gap:var(--s-4);box-shadow:var(--shadow)}
+.stars{display:flex;gap:2px;color:var(--aji)}
+.stars svg{width:18px;height:18px}
+.review p{font-family:var(--f-display);font-size:1.2rem;line-height:1.4}
+.review footer{margin-top:auto;font-size:var(--fs-sm);color:var(--ink-soft)}
+.review footer b{color:var(--ink)}
+@media (min-width:860px){.review-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* VISÍTANOS */
+.visit{display:grid;gap:var(--s-6)}
+.visit-card{background:var(--surface);border-radius:var(--r-lg);padding:clamp(1.5rem,1rem + 2vw,2.5rem);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:var(--s-5)}
+.visit h2{font-size:var(--fs-h2);margin-top:var(--s-3)}
+.addr{display:flex;gap:var(--s-3);align-items:flex-start}
+.addr .icon{color:var(--olive);margin-top:3px}
+.hours{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.hours li{display:flex;justify-content:space-between;gap:var(--s-4);padding:.7rem .25rem;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.hours li.is-today{background:color-mix(in srgb,var(--aji) 22%,transparent);border-radius:var(--r-sm);font-weight:700;padding-inline:.75rem}
+.hours .day{text-transform:capitalize}
+.open-now{display:inline-flex;align-items:center;gap:.5rem;font-size:var(--fs-sm);font-weight:700}
+.open-now::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--dot,#9A9A8A)}
+.visit-actions{display:flex;flex-wrap:wrap;gap:var(--s-3)}
+.map{border-radius:var(--r-lg);overflow:hidden;min-height:360px;background:var(--placeholder);box-shadow:var(--shadow)}
+.map iframe{width:100%;height:100%;min-height:360px;border:0;display:block}
+@media (min-width:900px){.visit{grid-template-columns:.95fr 1.05fr}}
+
+/* FOOTER */
+.footer{background:var(--olive-deep);color:#D9D3C0;padding-block:var(--s-8) var(--s-6)}
+.footer-top{display:grid;gap:var(--s-6)}
+.footer .brand{color:#F6F1E6;font-size:2rem}
+.footer a{text-decoration:none}
+.footer a:hover{color:#EDB84E}
+.footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;font-size:var(--fs-sm)}
+.footer h4{margin:0 0 var(--s-3);font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:#C9D38F}
+.footer-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--s-3);margin-top:var(--s-7);padding-top:var(--s-5);border-top:1px solid rgba(217,211,192,.18);font-size:var(--fs-xs);color:rgba(217,211,192,.7)}
+@media (min-width:760px){.footer-top{grid-template-columns:1.4fr 1fr 1fr 1fr}}
+
+/* WhatsApp flotante */
+.fab{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:var(--z-fab);width:60px;height:60px;border-radius:50%;display:grid;place-items:center;background:#25D366;color:#0B2E17;box-shadow:0 10px 28px -6px rgba(0,0,0,.4);transform:translateY(120px);transition:transform var(--t-med) var(--ease-out)}
+.fab.is-visible{transform:none}
+.fab svg{width:30px;height:30px}
+.fab:active{transform:scale(.94)}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity var(--t-slow) var(--ease-out),transform var(--t-slow) var(--ease-out);transition-delay:var(--d,0ms)}
+.reveal.is-in{opacity:1;transform:none}
+.no-js .reveal{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+  .hero .media img{transform:none}
+}
+</style>
+</head>
+<body class="no-js">
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<!-- Íconos SVG (Lucide, trazo 1.75) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2Zm5.8 14.1c-.24.68-1.42 1.3-1.96 1.36-.5.06-1.13.08-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.18-4.94-4.37-.15-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36h.56c.18 0 .42-.07.66.5.24.58.83 2 .9 2.15.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.3-.13.6.17.29.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.37 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.15.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.7-.17 1.37Z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-bike" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm-3 11.5V14l-3-3 4-3 2 3h2"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 26C6 14 14 6 27 5c0 13-8 21-20 21"/><path d="M6 26 18 14"/><circle cx="21.5" cy="10.5" r="2.2" fill="currentColor" stroke="none"/></symbol>
+</svg>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#top" aria-label="Barra Olivo, inicio"><svg aria-hidden="true"><use href="#i-leaf"/></svg>Barra Olivo</a>
+    <ul class="nav-links">
+      <li><a href="#carta">Carta</a></li>
+      <li><a href="#experiencia">Experiencia</a></li>
+      <li><a href="#eventos">Eventos</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#visitanos">Visítanos</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Cambiar modo claro u oscuro">
+        <svg class="icon theme-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+        <svg class="icon theme-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
+      <a class="btn btn-aji js-wa" data-wa="reserva" href="#">Reservar</a>
+      <button class="icon-btn menu-toggle" id="menuBtn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="drawer"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menú">
+  <div class="drawer-top">
+    <span class="brand"><svg aria-hidden="true"><use href="#i-leaf"/></svg>Barra Olivo</span>
+    <button class="icon-btn" id="closeBtn" type="button" aria-label="Cerrar menú"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+  </div>
+  <ul>
+    <li><a href="#carta">Carta</a></li>
+    <li><a href="#experiencia">Experiencia</a></li>
+    <li><a href="#eventos">Eventos</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#visitanos">Visítanos</a></li>
+  </ul>
+  <a class="btn btn-aji js-wa" data-wa="reserva" href="#"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>Reservar por WhatsApp</a>
+</div>
+
+<main id="main">
+
+<!-- 1 · HERO -->
+<section class="hero" id="top">
+  <figure class="media" data-label="img/hero.jpg" style="margin:0"><img src="img/hero.jpg" alt="Ceviche servido en la barra de Barra Olivo" fetchpriority="high" width="1920" height="1280"></figure>
+  <img class="sticker" src="img/stickers/hero.png" alt="" aria-hidden="true" width="360" height="360">
+  <div class="container hero-inner">
+    <h1 class="reveal">Sabor de Lima,<br><em>en Chicureo.</em></h1>
+    <p class="reveal" style="--d:120ms">Cocina peruana y marisquería de barra.</p>
+    <div class="hero-cta reveal" style="--d:220ms">
+      <a class="btn btn-aji js-wa" data-wa="hero" href="#"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>Reserva o pide delivery</a>
+      <a class="btn btn-light" href="#carta">Ver la carta</a>
+    </div>
+    <div class="hero-meta reveal" style="--d:320ms">
+      <span><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>Boulevard Los Ingleses · Local 16</span>
+      <span><svg class="icon" aria-hidden="true"><use href="#i-bike"/></svg>Delivery en Chicureo</span>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · NOSOTROS -->
+<section class="section" id="nosotros">
+  <div class="container about">
+    <div class="about-figure reveal">
+      <figure class="media" data-label="img/nosotros.jpg" style="margin:0"><img src="img/nosotros.jpg" alt="Cocineros preparando platos en la barra" loading="lazy" width="800" height="1000"></figure>
+      <img class="sticker" src="img/stickers/nosotros.png" alt="" aria-hidden="true" width="300" height="300" loading="lazy">
+      <div class="stamp" aria-hidden="true"><div><small>Desde</small><strong>2023</strong><small>Chicureo</small></div></div>
+    </div>
+    <div>
+      <span class="eyebrow reveal">Quiénes somos</span>
+      <h2 class="reveal">La primera barra peruana <em>de Chicureo</em></h2>
+      <p class="lead reveal">Llegamos desde Santiago en noviembre de 2023 al Boulevard Los Ingleses, con cocina peruana, marisquería y delivery.</p>
+      <ul class="pillars">
+        <li class="reveal" style="--d:0ms"><span class="num">01</span><div><b>Producto del día</b><span>Pesca y mariscos frescos, cada mañana.</span> <span class="sample">Contenido de ejemplo</span></div></li>
+        <li class="reveal" style="--d:80ms"><span class="num">02</span><div><b>Cocina a la vista</b><span>Te sientas en la barra y ves salir tu plato.</span></div></li>
+        <li class="reveal" style="--d:160ms"><span class="num">03</span><div><b>A tu casa</b><span>El mismo ceviche, con delivery en Chicureo.</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · CARTA -->
+<section class="section carta" id="carta">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow reveal">La carta</span>
+        <h2 class="reveal">Del mar <em>a la barra</em></h2>
+      </div>
+      <img class="sticker" src="img/stickers/carta.png" alt="" aria-hidden="true" width="360" height="360" loading="lazy">
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Categorías de la carta" id="tabs"></div>
+    <div class="menu-grid" id="menuGrid" role="tabpanel" aria-live="polite"></div>
+
+    <div class="carta-foot">
+      <a class="btn btn-olive" href="https://queresto.com/BarraOlivo" target="_blank" rel="noopener">Carta completa<svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a>
+      <a class="btn btn-ghost js-wa" data-wa="carta" href="#"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>Pedir por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- 8.1 · EXPERIENCIA -->
+<section class="section" id="experiencia">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow reveal">La experiencia</span>
+        <h2 class="reveal">Más que comer, <em>quedarse</em></h2>
+      </div>
+    </div>
+    <div class="exp-grid">
+      <article class="exp-card reveal">
+        <figure class="media" data-label="img/exp-barra.jpg" style="margin:0"><img src="img/exp-barra.jpg" alt="Barra de cocina de Barra Olivo" loading="lazy" width="900" height="1100"></figure>
+        <div><h3>Barra de cocina</h3><p>Cocina abierta, frente a ti.</p></div>
+      </article>
+      <article class="exp-card reveal" style="--d:100ms">
+        <figure class="media" data-label="img/exp-musica.jpg" style="margin:0"><img src="img/exp-musica.jpg" alt="Música en vivo en el local" loading="lazy" width="700" height="1000"></figure>
+        <div><h3>Música en vivo</h3><p>Fines de semana. <span class="sample">Contenido de ejemplo</span></p></div>
+      </article>
+      <article class="exp-card reveal" style="--d:200ms">
+        <figure class="media" data-label="img/exp-delivery.jpg" style="margin:0"><img src="img/exp-delivery.jpg" alt="Pedido de delivery de Barra Olivo" loading="lazy" width="700" height="1000"></figure>
+        <div><h3>Delivery</h3><p>Pide por WhatsApp.</p></div>
+      </article>
+    </div>
+
+    <div class="ig-strip" id="igStrip"></div>
+    <div class="ig-cta">
+      <a class="ig-handle" href="https://www.instagram.com/barraolivochicureo/" target="_blank" rel="noopener">@barraolivochicureo</a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/barraolivochicureo/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-ig"/></svg>Síguenos</a>
+    </div>
+  </div>
+</section>
+
+<!-- 8.2 · EVENTOS -->
+<section class="section events" id="eventos">
+  <div class="container events-grid">
+    <img class="sticker" src="img/stickers/eventos.png" alt="" aria-hidden="true" width="300" height="300" loading="lazy">
+    <figure class="media reveal" data-label="img/evento.jpg" style="margin:0"><img src="img/evento.jpg" alt="Mesa preparada para un evento privado" loading="lazy" width="1000" height="800"></figure>
+    <div>
+      <span class="eyebrow reveal">Eventos</span>
+      <h2 class="reveal">Cotiza <em>tu evento</em></h2>
+      <p class="lead reveal">Cumpleaños, empresas o celebraciones. En el local o con catering.</p>
+      <form class="form reveal" id="eventForm" novalidate>
+        <div class="field">
+          <label for="ev-name">Nombre</label>
+          <input id="ev-name" name="nombre" type="text" autocomplete="name" placeholder="Tu nombre" required>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="ev-date">Fecha</label>
+            <input id="ev-date" name="fecha" type="date">
+          </div>
+          <div class="field">
+            <label for="ev-people">Personas</label>
+            <input id="ev-people" name="personas" type="number" inputmode="numeric" min="6" placeholder="20">
+          </div>
+        </div>
+        <div class="field">
+          <label for="ev-type">Tipo de evento</label>
+          <select id="ev-type" name="tipo">
+            <option>Cumpleaños</option>
+            <option>Evento de empresa</option>
+            <option>Celebración familiar</option>
+            <option>Catering / a domicilio</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <button class="btn btn-aji" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>Cotizar por WhatsApp</button>
+        <p class="form-note">Te respondemos por WhatsApp con una propuesta.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · EQUIPO -->
+<section class="section" id="equipo">
+  <div class="container founder">
+    <figure class="media reveal" data-label="img/fundador.jpg" style="margin:0"><img src="img/fundador.jpg" alt="Fundador de Barra Olivo en la cocina" loading="lazy" width="800" height="1000"></figure>
+    <div>
+      <span class="eyebrow reveal">El equipo</span>
+      <blockquote class="reveal" style="margin-top:var(--s-5)">Cocino como en casa de mi abuela en Barranco: con limón recién exprimido y la mesa llena.</blockquote>
+      <div class="founder-name reveal">
+        <b>Andrés Quispe</b>
+        <span>Fundador y jefe de cocina</span>
+      </div>
+      <ul class="founder-facts reveal">
+        <li>Limeño</li><li>15 años en cocina</li><li>Fan del ají amarillo</li>
+      </ul>
+      <p class="reveal" style="margin-top:var(--s-4)"><span class="sample">Contenido de ejemplo</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · RESEÑAS -->
+<section class="section reviews" id="resenas">
+  <div class="container">
+    <img class="sticker" src="img/stickers/resenas.png" alt="" aria-hidden="true" width="240" height="240" loading="lazy">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow reveal">Lo que dicen</span>
+        <h2 class="reveal">Vecinos <em>que vuelven</em></h2>
+      </div>
+      <span class="sample reveal">Contenido de ejemplo</span>
+    </div>
+    <div class="review-grid">
+      <figure class="review reveal" style="margin:0">
+        <div class="stars" aria-label="5 de 5 estrellas"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></div>
+        <p>“El pulpo al olivo es de otro nivel. Ya es nuestro panorama de viernes.”</p>
+        <footer><b>Carolina M.</b> · Piedra Roja</footer>
+      </figure>
+      <figure class="review reveal" style="margin:0;--d:100ms">
+        <div class="stars" aria-label="5 de 5 estrellas"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></div>
+        <p>“Pedimos delivery y el ceviche llegó perfecto. Por fin algo así en Chicureo.”</p>
+        <footer><b>Rodrigo A.</b> · Chicureo</footer>
+      </figure>
+      <figure class="review reveal" style="margin:0;--d:200ms">
+        <div class="stars" aria-label="5 de 5 estrellas"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></div>
+        <p>“Fuimos con los niños un domingo. Atención cálida y la tabla para compartir, un 7.”</p>
+        <footer><b>Familia Soto</b> · Colina</footer>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 5 + 7 · HORARIOS Y UBICACIÓN -->
+<section class="section" id="visitanos">
+  <div class="container visit">
+    <div class="visit-card reveal">
+      <div>
+        <span class="eyebrow">Visítanos</span>
+        <h2>Te esperamos</h2>
+      </div>
+      <div class="addr">
+        <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
+        <div><b>Local 16, Boulevard Los Ingleses</b><br><span style="color:var(--ink-soft)">Chicureo, Colina · Región Metropolitana</span></div>
+      </div>
+      <div>
+        <p class="open-now" id="openNow" style="margin-bottom:var(--s-3)">Horario</p>
+        <ul class="hours" id="hours"></ul>
+      </div>
+      <div class="visit-actions">
+        <a class="btn btn-aji js-wa" data-wa="ubicacion" href="#"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>Reservar mesa</a>
+        <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Barra+Olivo+Boulevard+Los+Ingleses+Chicureo" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>Cómo llegar</a>
+      </div>
+    </div>
+    <div class="map reveal" style="--d:120ms">
+      <iframe title="Mapa: Barra Olivo en Boulevard Los Ingleses, Chicureo" src="https://www.google.com/maps?q=Barra+Olivo,+Boulevard+Los+Ingleses,+Chicureo,+Colina&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a class="brand" href="#top"><svg aria-hidden="true"><use href="#i-leaf"/></svg>Barra Olivo</a>
+        <p style="margin-top:var(--s-3);max-width:30ch;font-size:var(--fs-sm)">Cocina peruana y marisquería en Chicureo.</p>
+      </div>
+      <div>
+        <h4>Explora</h4>
+        <ul><li><a href="#carta">Carta</a></li><li><a href="#eventos">Eventos</a></li><li><a href="#visitanos">Ubicación</a></li></ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul><li><a class="js-wa" data-wa="footer" href="#">+56 9 3955 6339</a></li><li><a href="https://www.instagram.com/barraolivochicureo/" target="_blank" rel="noopener">@barraolivochicureo</a></li></ul>
+      </div>
+      <div>
+        <h4>Horario</h4>
+        <ul><li>Lun a sáb · 12:30–00:00</li><li>Dom · 12:30–18:30</li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Barra Olivo · Chicureo</span>
+      <a href="https://queresto.com/BarraOlivo" target="_blank" rel="noopener">Carta online</a>
+    </div>
+  </div>
+</footer>
+
+<a class="fab js-wa" id="fab" data-wa="flotante" href="#" aria-label="Escríbenos por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
+
+<script>
+/* ============ CONFIG ============ */
+const CONFIG = {
+  whatsapp: "56939556339",
+  messages: {
+    hero:      "Hola Barra Olivo 👋 Quiero reservar o pedir delivery.",
+    reserva:   "Hola Barra Olivo, quiero reservar una mesa. ¿Tienen disponibilidad para ___ personas el día ___?",
+    carta:     "Hola Barra Olivo, vi la carta en la web y quiero hacer un pedido.",
+    plato:     "Hola Barra Olivo, quiero pedir: {item}. ¿Está disponible para delivery?",
+    ubicacion: "Hola Barra Olivo, quiero reservar una mesa en el local de Boulevard Los Ingleses.",
+    evento:    "Hola Barra Olivo, quiero cotizar un evento.",
+    footer:    "Hola Barra Olivo, tengo una consulta.",
+    flotante:  "Hola Barra Olivo 👋 Tengo una consulta."
+  }
+};
+const waLink = (msg) => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
+
+/* ============ CARTA ============ */
+const CATS = [
+  { id:"destacados", label:"Destacados" },
+  { id:"frias",      label:"Entradas frías" },
+  { id:"calientes",  label:"Entradas calientes" },
+  { id:"fondo",      label:"Platos de fondo" },
+  { id:"compartir",  label:"Para compartir" },
+  { id:"cocteleria", label:"Coctelería" },
+  { id:"postres",    label:"Postres" }
+];
+// sample:true → dato inventado, reemplazar antes de entregar
+const MENU = [
+  { cat:"frias",     star:1, name:"Ceviche clásico",            desc:"Pesca del día y leche de tigre.",                     price:14990, img:"ceviche.jpg" },
+  { cat:"calientes", star:1, name:"Pulpo al Olivo",             desc:"Pulpo tierno en salsa de aceituna botija.",           price:15990, img:"pulpo-al-olivo.jpg", sampleDesc:1 },
+  { cat:"calientes", star:1, name:"Machas a la Parmesana",      desc:"Machas marinadas gratinadas con parmesano.",          price:16990, img:"machas-parmesana.jpg" },
+  { cat:"calientes", star:1, name:"Ostiones a la Parmesana",    desc:"Ostiones frescos gratinados con parmesano.",          price:17990, img:"ostiones-parmesana.jpg" },
+  { cat:"frias",     star:1, name:"Causas típicas",             desc:"Elige la tuya: pulpo, camarón o pollo.",              price:12990, img:"causas.jpg" },
+  { cat:"frias",     star:1, name:"Tartar de Atún",             desc:"Atún fresco, palta y toque nikkei.",                  price:14990, img:"tartar-atun.jpg", sampleDesc:1 },
+  { cat:"calientes", star:1, name:"Empanadas de Lomo Saltado",  desc:"Crujientes, rellenas de nuestro lomo saltado.",       price:9990,  img:"empanadas-lomo.jpg" },
+  { cat:"compartir", star:1, name:"Tabla para compartir",       desc:"Ceviche, pulpo al olivo, tiradito de salmón al maracuyá y mini causas de camarón.", price:null, img:"tabla.jpg" },
+  { cat:"fondo",     name:"Lomo saltado",            desc:"Wok de lomo, papas fritas y arroz.",            price:15990, img:"lomo-saltado.jpg",    sample:1 },
+  { cat:"fondo",     name:"Chaufa de mariscos",      desc:"Arroz al wok con mariscos y cebollín.",         price:14990, img:"chaufa-mariscos.jpg", sample:1 },
+  { cat:"fondo",     name:"Ají de gallina",          desc:"Cremoso, con papa amarilla y huevo.",           price:12990, img:"aji-gallina.jpg",     sample:1 },
+  { cat:"cocteleria",name:"Pisco sour peruano",      desc:"Pisco quebranta, limón y amargo de angostura.", price:6990,  img:"pisco-sour.jpg",      sample:1 },
+  { cat:"cocteleria",name:"Chilcano",                desc:"Pisco, ginger ale y limón.",                    price:6490,  img:"chilcano.jpg",        sample:1 },
+  { cat:"cocteleria",name:"Maracuyá sour",           desc:"Pisco y maracuyá natural.",                     price:7490,  img:"maracuya-sour.jpg",   sample:1 },
+  { cat:"postres",   name:"Suspiro limeño",          desc:"Manjar blanco y merengue al oporto.",           price:5990,  img:"suspiro-limeno.jpg",  sample:1 },
+  { cat:"postres",   name:"Picarones",               desc:"Con miel de chancaca.",                         price:5490,  img:"picarones.jpg",       sample:1 },
+  { cat:"postres",   name:"Volcán de lúcuma",        desc:"Tibio, con helado de vainilla.",                price:6490,  img:"volcan-lucuma.jpg",   sample:1 }
+];
+const clp = (n) => n == null ? "A consultar" : "$" + n.toLocaleString("es-CL");
+
+function mediaFallback(root = document){
+  root.querySelectorAll(".media img, .sticker").forEach(img => {
+    const mark = () => (img.classList.contains("sticker") ? img : img.parentElement).classList.add("is-missing");
+    if (img.complete && img.naturalWidth === 0) mark();
+    img.addEventListener("error", mark, { once:true });
+  });
+}
+
+function renderTabs(){
+  const tabs = document.getElementById("tabs");
+  tabs.innerHTML = CATS.map((c,i) =>
+    `<button class="tab" role="tab" id="tab-${c.id}" data-cat="${c.id}" aria-selected="${i===0}" tabindex="${i===0?0:-1}" aria-controls="menuGrid">${c.label}</button>`
+  ).join("");
+  tabs.addEventListener("click", e => { const b = e.target.closest(".tab"); if (b) selectTab(b); });
+  tabs.addEventListener("keydown", e => {
+    if (!["ArrowLeft","ArrowRight"].includes(e.key)) return;
+    const all = [...tabs.querySelectorAll(".tab")];
+    const i = all.indexOf(document.activeElement);
+    const next = all[(i + (e.key === "ArrowRight" ? 1 : -1) + all.length) % all.length];
+    next.focus(); selectTab(next);
+  });
+}
+function selectTab(btn){
+  document.querySelectorAll(".tab").forEach(t => { const on = t === btn; t.setAttribute("aria-selected", on); t.tabIndex = on ? 0 : -1; });
+  btn.scrollIntoView({ block:"nearest", inline:"center", behavior:"smooth" });
+  renderMenu(btn.dataset.cat);
+}
+function renderMenu(cat){
+  const grid = document.getElementById("menuGrid");
+  grid.setAttribute("aria-labelledby", "tab-" + cat);
+  const items = cat === "destacados" ? MENU.filter(m => m.star) : MENU.filter(m => m.cat === cat);
+  grid.innerHTML = items.map((m,i) => `
+    <article class="dish" style="--i:${i}">
+      <figure class="media" data-label="img/${m.img}" style="margin:0"><img src="img/${m.img}" alt="${m.name}" loading="lazy" width="800" height="600"></figure>
+      <div class="dish-body">
+        <div class="dish-top"><h3>${m.name}</h3><span class="price">${clp(m.price)}</span></div>
+        <p>${m.desc}</p>
+        <div class="dish-foot">
+          <a class="dish-order js-wa" data-wa="plato" data-wa-item="${m.name}" href="#">Pedir <svg class="icon" aria-hidden="true" style="width:16px;height:16px"><use href="#i-arrow"/></svg></a>
+          ${m.sample || m.sampleDesc ? '<span class="sample">Contenido de ejemplo</span>' : ""}
+        </div>
+      </div>
+    </article>`).join("");
+  mediaFallback(grid);
+  bindWa(grid);
+}
+
+/* ============ WHATSAPP ============ */
+function bindWa(root = document){
+  root.querySelectorAll(".js-wa").forEach(a => {
+    const key = a.dataset.wa || "flotante";
+    let msg = CONFIG.messages[key] || CONFIG.messages.flotante;
+    if (a.dataset.waItem) msg = msg.replace("{item}", a.dataset.waItem);
+    a.href = waLink(msg);
+    a.target = "_blank";
+    a.rel = "noopener";
+  });
+}
+
+document.getElementById("eventForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const f = e.target;
+  const name = f.nombre.value.trim();
+  if (!name){ f.nombre.focus(); f.nombre.setAttribute("aria-invalid","true"); return; }
+  f.nombre.removeAttribute("aria-invalid");
+  const lines = [CONFIG.messages.evento, `• Nombre: ${name}`, `• Tipo: ${f.tipo.value}`];
+  if (f.fecha.value) lines.push(`• Fecha: ${f.fecha.value.split("-").reverse().join("/")}`);
+  if (f.personas.value) lines.push(`• Personas: ${f.personas.value}`);
+  window.open(waLink(lines.join("\n")), "_blank", "noopener");
+});
+
+/* ============ HORARIOS (dato real) ============ */
+const HOURS = [ // 0 = domingo
+  { d:"domingo",   o:"12:30", c:"18:30" },
+  { d:"lunes",     o:"12:30", c:"24:00" },
+  { d:"martes",    o:"12:30", c:"24:00" },
+  { d:"miércoles", o:"12:30", c:"24:00" },
+  { d:"jueves",    o:"12:30", c:"24:00" },
+  { d:"viernes",   o:"12:30", c:"24:00" },
+  { d:"sábado",    o:"12:30", c:"24:00" }
+];
+function renderHours(){
+  const now = new Date(new Date().toLocaleString("en-US", { timeZone:"America/Santiago" }));
+  const today = now.getDay();
+  const order = [1,2,3,4,5,6,0];
+  const fmt = t => t === "24:00" ? "00:00" : t;
+  document.getElementById("hours").innerHTML = order.map(i =>
+    `<li class="${i===today?"is-today":""}"><span class="day">${HOURS[i].d}</span><span>${fmt(HOURS[i].o)} – ${fmt(HOURS[i].c)}</span></li>`).join("");
+  const mins = now.getHours()*60 + now.getMinutes();
+  const toM = t => { const [h,m] = t.split(":").map(Number); return h*60+m; };
+  const h = HOURS[today];
+  const open = mins >= toM(h.o) && mins < toM(h.c);
+  const el = document.getElementById("openNow");
+  el.textContent = open ? "Abierto ahora" : "Cerrado ahora";
+  el.style.setProperty("--dot", open ? "#3FA34D" : "#C2410C");
+}
+
+/* ============ INSTAGRAM ============ */
+document.getElementById("igStrip").innerHTML = [1,2,3,4,5,6].map(n =>
+  `<a href="https://www.instagram.com/barraolivochicureo/" target="_blank" rel="noopener" aria-label="Ver en Instagram"><figure class="media" data-label="ig-${n}" style="margin:0"><img src="img/ig-${n}.jpg" alt="" loading="lazy" width="400" height="400"></figure></a>`).join("");
+
+/* ============ TEMA ============ */
+const themeBtn = document.getElementById("themeBtn");
+try { const t = localStorage.getItem("bo-theme"); if (t) document.documentElement.dataset.theme = t; } catch(e){}
+themeBtn.addEventListener("click", () => {
+  const cur = document.documentElement.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  const next = cur === "dark" ? "light" : "dark";
+  document.documentElement.dataset.theme = next;
+  try { localStorage.setItem("bo-theme", next); } catch(e){}
+});
+
+/* ============ NAV / DRAWER ============ */
+const nav = document.getElementById("nav"), fab = document.getElementById("fab");
+const onScroll = () => {
+  const y = window.scrollY;
+  nav.classList.toggle("is-solid", y > window.innerHeight * 0.75 - 68);
+  fab.classList.toggle("is-visible", y > 400);
+};
+window.addEventListener("scroll", onScroll, { passive:true });
+
+const drawer = document.getElementById("drawer"), menuBtn = document.getElementById("menuBtn");
+const setDrawer = (open) => {
+  drawer.classList.toggle("is-open", open);
+  menuBtn.setAttribute("aria-expanded", open);
+  document.body.style.overflow = open ? "hidden" : "";
+  if (open) document.getElementById("closeBtn").focus(); else menuBtn.focus();
+};
+menuBtn.addEventListener("click", () => setDrawer(true));
+document.getElementById("closeBtn").addEventListener("click", () => setDrawer(false));
+drawer.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setDrawer(false)));
+document.addEventListener("keydown", e => { if (e.key === "Escape" && drawer.classList.contains("is-open")) setDrawer(false); });
+
+/* ============ REVEAL + NAV ACTIVA ============ */
+document.body.classList.remove("no-js");
+const io = new IntersectionObserver(entries => entries.forEach(en => {
+  if (en.isIntersecting){ en.target.classList.add("is-in"); io.unobserve(en.target); }
+}), { threshold:.12, rootMargin:"0px 0px -40px 0px" });
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+const links = [...document.querySelectorAll(".nav-links a")];
+const spy = new IntersectionObserver(entries => entries.forEach(en => {
+  if (en.isIntersecting) links.forEach(l => l.classList.toggle("is-active", l.getAttribute("href") === "#" + en.target.id));
+}), { rootMargin:"-45% 0px -50% 0px" });
+document.querySelectorAll("main section[id]").forEach(s => spy.observe(s));
+
+/* ============ INIT ============ */
+renderTabs();
+renderMenu("destacados");
+renderHours();
+mediaFallback();
+bindWa();
+onScroll();
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

@@ -1,24 +1,27 @@
 # Multimedia · Barra Olivo
 
-Sube las fotos aquí con estos nombres exactos (jpg, idealmente ≤ 300 KB y 1600 px de ancho).
-Si falta alguna, la página muestra un fondo de respaldo y no se rompe.
+Los originales que se subieron están intactos en `/media-original`. Aquí van las versiones
+recortadas (sin textos de Instagram) y comprimidas que usa la web.
 
-- **General:** hero.jpg · nosotros.jpg · fundador.jpg · evento.jpg
-- **Experiencia:** exp-barra.jpg · exp-musica.jpg · exp-delivery.jpg
-- **Instagram:** ig-1.jpg … ig-6.jpg (cuadradas)
-- **Carta (4:3):** ceviche.jpg · pulpo-al-olivo.jpg · machas-parmesana.jpg · ostiones-parmesana.jpg ·
-  causas.jpg · tartar-atun.jpg · empanadas-lomo.jpg · tabla.jpg · lomo-saltado.jpg ·
-  chaufa-mariscos.jpg · aji-gallina.jpg · pisco-sour.jpg · chilcano.jpg · maracuya-sour.jpg ·
-  suspiro-limeno.jpg · picarones.jpg · volcan-lucuma.jpg
+## En uso
+| Archivo | Sección | Origen |
+|---|---|---|
+| hero.jpg | Portada | Foto cocinera con pulpo (recortada sin logo ni frase) |
+| nosotros.jpg | Quiénes somos | Foto familia |
+| evento.jpg | Cotiza tu evento | Foto brindis al atardecer |
+| chilcano.jpg | Carta · Coctelería | Foto cóctel naranja |
+| pulpo-al-olivo.jpg · tartar-atun.jpg · ostiones-parmesana.jpg · lomo-saltado.jpg · tabla.jpg | Carta | Cuadros del video de ambiente |
+| exp-barra.jpg · exp-musica.jpg | Experiencia | Cuadros del video de ambiente |
+| video/ambiente.mp4 + ambiente-poster.jpg | Experiencia | Video de ambiente (sin audio, 3 MB) |
+| brand/* | Menú, pie de página | Logos y aliado Vidaurre Bikes |
+| stickers/carta.png · rama.png · olivo.png | Carta, Quiénes somos, Experiencia, Eventos | Stickers sin fondo |
 
-## Stickers (`img/stickers/`, PNG con fondo transparente)
+## Faltan (se muestra una rama de olivo como respaldo)
+Súbelas con este nombre exacto a `/img` (JPG 4:3, ~1200 px de ancho):
 
-Uno por sección como máximo:
+- ceviche.jpg · machas-parmesana.jpg · causas.jpg · empanadas-lomo.jpg
+- aji-gallina.jpg · chaufa-mariscos.jpg · pisco-sour.jpg · maracuya-sour.jpg
+- suspiro-limeno.jpg · picarones.jpg · volcan-lucuma.jpg
+- fundador.jpg (retrato vertical 4:5 del fundador; hoy muestra el monograma)
 
-| Archivo | Dónde aparece |
-|---|---|
-| carta.png | Esquina superior derecha de la Carta |
-| hero.png | Esquina superior derecha de la portada |
-| nosotros.png | Sobre la foto de «Quiénes somos» |
-| eventos.png | Esquina inferior de «Cotiza tu evento» |
-| resenas.png | Junto al título de reseñas (solo escritorio) |
+`videochef.mp4` quedó fuera, según lo pedido.
